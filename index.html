@@ -13,7 +13,6 @@
 
     <header class="header">
       <img class="header__logo" src="./images/header-logo.svg" alt="логотип сайта Mesto-Russia">
-      <div class="header__line"></div>
     </header>
 
     <main class="main">
@@ -27,7 +26,7 @@
         <button class="profile__add-button button" type="button" title="Добавить место"></button>
       </section>
 
-      <section class="cardboard">
+      <section class="card-board">
         <ul class="board">
           <li class="board__card">
             <img class="board__card-photo" src="./images/mesto-moscow.jpg" alt="Москва">
@@ -67,17 +66,17 @@
       <p class="footer__copyright">© 2020. Березин Михаил</p>
     </footer>
 
-    <section class="popup">
+    <div class="popup">
       <div class="popup__container">
         <h2 class="popup__title">Редактировать профиль</h2>
         <form class="form" name="profile">
-          <input class="form__text form__text_name_name" type="text" name="name" placeholder="Имя" value="Жак-Ив Кусто"/>
-          <input class="form__text form__text_name_job" type="text" name="job" placeholder="О себе" value="Исследователь океана"/>
+          <input class="form__text form__text_name_name" type="text" name="name" placeholder="Имя" value=""/>
+          <input class="form__text form__text_name_job" type="text" name="job" placeholder="О себе" value=""/>
           <button class="form__submit" type="submit" title="Сохранить изменения">Сохранить</button>
           <button class="popup__close-button button" type="reset" title="Закрыть"></button>
         </form>
       </div>
-    </section>
+    </вшм>
 
   </div>
   <script src="./scripts/index.js"></script>
