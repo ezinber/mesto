@@ -21,10 +21,10 @@
         <img class="profile__avatar" src="./images/profile-avatar.jpg" alt="Жак-Ив Кусто">
         <div class="profile__info">
           <h1 class="profile__title">Жак-Ив Кусто</h1>
-          <button class="profile__edit-button button" title="Редактировать профиль"></button>
+          <button class="profile__edit-button button" type="button" title="Редактировать профиль"></button>
           <p class="profile__subtitle">Исследователь океана</p>
         </div>
-        <button class="profile__add-button button" title="Добавить место"></button>
+        <button class="profile__add-button button" type="button" title="Добавить место"></button>
       </section>
 
       <section class="cardboard">
@@ -32,32 +32,32 @@
           <li class="board__card">
             <img class="board__card-photo" src="./images/mesto-moscow.jpg" alt="Москва">
             <h2 class="board__card-title">Москва</h2>
-            <button class="board__card-like button"></button>
+            <button class="board__card-like button" type="button" title="Нравится"></button>
           </li>
           <li class="board__card">
             <img class="board__card-photo" src="./images/mesto-spb.jpg" alt="Санкт-Петербург">
             <h2 class="board__card-title">Санкт-Петербург</h2>
-            <button class="board__card-like button"></button>
+            <button class="board__card-like button" type="button" title="Нравится"></button>
           </li>
           <li class="board__card">
             <img class="board__card-photo" src="./images/mesto-murmansk.jpg" alt="Мурманск">
             <h2 class="board__card-title">Мурманск</h2>
-            <button class="board__card-like button"></button>
+            <button class="board__card-like button" type="button" title="Нравится"></button>
           </li>
           <li class="board__card">
             <img class="board__card-photo" src="./images/mesto-sochi.jpg" alt="Сочи">
             <h2 class="board__card-title">Сочи</h2>
-            <button class="board__card-like button"></button>
+            <button class="board__card-like button" type="button" title="Нравится"></button>
           </li>
           <li class="board__card">
             <img class="board__card-photo" src="./images/mesto-bashkiria.jpg" alt="Башкортостан">
             <h2 class="board__card-title">Башкортостан</h2>
-            <button class="board__card-like button"></button>
+            <button class="board__card-like button" type="button" title="Нравится"></button>
           </li>
           <li class="board__card">
             <img class="board__card-photo" src="./images/mesto-kamchatka.jpg" alt="Камчатка">
             <h2 class="board__card-title">Камчатка</h2>
-            <button class="board__card-like button"></button>
+            <button class="board__card-like button" type="button" title="Нравится"></button>
           </li>
         </ul>
       </section>
@@ -70,10 +70,10 @@
     <section class="popup">
       <div class="popup__container">
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form class="form">
+        <form class="form" name="profile">
           <input class="form__text form__text_name_name" type="text" name="name" placeholder="Имя" value="Жак-Ив Кусто"/>
           <input class="form__text form__text_name_job" type="text" name="job" placeholder="О себе" value="Исследователь океана"/>
-          <button class="form__submit" type="submit">Сохранить</button>
+          <button class="form__submit" type="submit" title="Сохранить изменения">Сохранить</button>
           <button class="popup__close-button button" type="reset" title="Закрыть"></button>
         </form>
       </div>
