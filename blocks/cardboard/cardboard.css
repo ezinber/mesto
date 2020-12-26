@@ -1,0 +1,10 @@
+.cardboard {
+  padding-top: 51px;
+  box-sizing: border-box;
+}
+
+@media screen and (max-width: 610px) {
+  .cardboard {
+    padding-top: 36px;
+  }
+}
