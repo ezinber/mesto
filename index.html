@@ -28,36 +28,14 @@
 
       <section class="card-board">
         <ul class="board">
-          <li class="board__card">
-            <img class="board__card-photo" src="./images/mesto-moscow.jpg" alt="Москва">
-            <h2 class="board__card-title">Москва</h2>
-            <button class="board__card-like button" type="button" title="Нравится"></button>
-          </li>
-          <li class="board__card">
-            <img class="board__card-photo" src="./images/mesto-spb.jpg" alt="Санкт-Петербург">
-            <h2 class="board__card-title">Санкт-Петербург</h2>
-            <button class="board__card-like button" type="button" title="Нравится"></button>
-          </li>
-          <li class="board__card">
-            <img class="board__card-photo" src="./images/mesto-murmansk.jpg" alt="Мурманск">
-            <h2 class="board__card-title">Мурманск</h2>
-            <button class="board__card-like button" type="button" title="Нравится"></button>
-          </li>
-          <li class="board__card">
-            <img class="board__card-photo" src="./images/mesto-sochi.jpg" alt="Сочи">
-            <h2 class="board__card-title">Сочи</h2>
-            <button class="board__card-like button" type="button" title="Нравится"></button>
-          </li>
-          <li class="board__card">
-            <img class="board__card-photo" src="./images/mesto-bashkiria.jpg" alt="Башкортостан">
-            <h2 class="board__card-title">Башкортостан</h2>
-            <button class="board__card-like button" type="button" title="Нравится"></button>
-          </li>
-          <li class="board__card">
-            <img class="board__card-photo" src="./images/mesto-kamchatka.jpg" alt="Камчатка">
-            <h2 class="board__card-title">Камчатка</h2>
-            <button class="board__card-like button" type="button" title="Нравится"></button>
-          </li>
+          <template id="card">
+            <li class="board__card">
+              <img class="board__card-photo button" src="card-photo" alt="Место">
+              <h2 class="board__card-title">Место</h2>
+              <button class="board__card-like button" type="button" title="Нравится"></button>
+              <button class="board__card-delete button" type="button" title="Удалить"></button>
+            </li>
+          </template>
         </ul>
       </section>
     </main>
@@ -87,6 +65,14 @@
           <button class="form__submit" type="submit" title="Добавить место">Создать</button>
           <button class="popup__close-button button" type="reset" title="Закрыть"></button>
         </form>
+      </div>
+    </div>
+
+    <div class="popup">
+      <div class="popup__image-container">
+        <img class="popup__image" src="./images/logo-mesto.svg" alt="Место">
+        <h2 class="popup__image-title">Место</h2>
+        <button class="popup__close-button button" type="reset" title="Закрыть"></button>
       </div>
     </div>
 

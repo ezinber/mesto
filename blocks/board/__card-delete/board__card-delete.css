@@ -1,0 +1,10 @@
+.board__card-delete {
+  margin: 18px 15px auto auto;
+  padding: 0;
+  width: 18px;
+  height: 19px;
+  background: rgb(0, 0, 0, 0) url('../../../images/card-delete.svg') no-repeat center;
+  background-size: contain;
+  grid-area: 1 / 1 / 2 / 3;
+  z-index: 1;
+}
