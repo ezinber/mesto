@@ -19,7 +19,6 @@ const imagePopupTitle = imagePopup.querySelector('.popup__image-title')
 
 const cardsContainer = document.querySelector('.board')
 const cardTemplate = cardsContainer.querySelector('#card').content;
-let cardElement;
 const initialCards = [
   {
     name: 'Архыз',
@@ -76,12 +75,11 @@ const submitEditingForm = evt => {
 
 const submitAddingForm = evt => {
   evt.preventDefault();
-  createCard(imageInput.value, placeInput.value);
-  cardsContainer.prepend(cardElement);
+  cardsContainer.prepend(createCard(imageInput.value, placeInput.value));
   closePopup(evt);
 }
 
-const createCard = (image, place) => {
+const createCard = (image, place, cardElement) => {
   cardElement = cardTemplate.cloneNode(true);
   cardElement.querySelector('.board__card-photo').src = image;
   cardElement.querySelector('.board__card-photo').alt = place;
@@ -92,12 +90,7 @@ const createCard = (image, place) => {
   return cardElement;
 }
 
-const addInitialCards = () => {
-  initialCards.forEach(item => {
-    createCard(item.link, item.name);
-    cardsContainer.append(cardElement);
-  });
-}
+const addInitialCards = () => initialCards.forEach(item => cardsContainer.append(createCard(item.link, item.name)));
 
 addInitialCards();
 
