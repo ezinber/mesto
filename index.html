@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="сервис Mesto: интерактивная страница, куда можно добавлять фотографии, удалять их и ставить лайки.">
+  <meta name="description" content="Cервис Mesto: интерактивная страница, куда можно добавлять фотографии, удалять их и ставить лайки.">
   <meta name="author" content="Михаил Березин">
   <link rel="stylesheet" href="./pages/index.css">
   <title>Mesto</title>
@@ -13,7 +13,6 @@
 
     <header class="header">
       <img class="header__logo" src="./images/header-logo.svg" alt="логотип сайта Mesto-Russia">
-      <div class="header__line"></div>
     </header>
 
     <main class="main">
@@ -21,64 +20,61 @@
         <img class="profile__avatar" src="./images/profile-avatar.jpg" alt="Жак-Ив Кусто">
         <div class="profile__info">
           <h1 class="profile__title">Жак-Ив Кусто</h1>
-          <button class="profile__edit-button button" title="Редактировать профиль"></button>
+          <button class="profile__edit-button button" type="button" title="Редактировать профиль"></button>
           <p class="profile__subtitle">Исследователь океана</p>
         </div>
-        <button class="profile__add-button button" title="Добавить место"></button>
+        <button class="profile__add-button button" type="button" title="Добавить место"></button>
       </section>
 
-      <section class="">
+      <section class="card-board">
         <ul class="board">
-          <li class="board__card">
-            <img class="board__card-photo" src="./images/mesto-moscow.jpg" alt="Москва">
-            <h2 class="board__card-title">Москва</h2>
-            <div class="board__card-like button"></div>
-          </li>
-          <li class="board__card">
-            <img class="board__card-photo" src="./images/mesto-spb.jpg" alt="Санкт-Петербург">
-            <h2 class="board__card-title">Санкт-Петербург</h2>
-            <div class="board__card-like button"></div>
-          </li>
-          <li class="board__card">
-            <img class="board__card-photo" src="./images/mesto-murmansk.jpg" alt="Мурманск">
-            <h2 class="board__card-title">Мурманск</h2>
-            <div class="board__card-like button"></div>
-          </li>
-          <li class="board__card">
-            <img class="board__card-photo" src="./images/mesto-sochi.jpg" alt="Сочи">
-            <h2 class="board__card-title">Сочи</h2>
-            <div class="board__card-like button"></div>
-          </li>
-          <li class="board__card">
-            <img class="board__card-photo" src="./images/mesto-bashkiria.jpg" alt="Башкортостан">
-            <h2 class="board__card-title">Башкортостан</h2>
-            <div class="board__card-like button"></div>
-          </li>
-          <li class="board__card">
-            <img class="board__card-photo" src="./images/mesto-kamchatka.jpg" alt="Камчатка">
-            <h2 class="board__card-title">Камчатка</h2>
-            <div class="board__card-like button"></div>
-          </li>
+          <template id="card">
+            <li class="board__card">
+              <img class="board__card-photo button" src="card-photo" alt="Место">
+              <h2 class="board__card-title">Место</h2>
+              <button class="board__card-like button" type="button" title="Нравится"></button>
+              <button class="board__card-delete button" type="button" title="Удалить"></button>
+            </li>
+          </template>
         </ul>
       </section>
-
     </main>
 
     <footer class="footer">
       <p class="footer__copyright">© 2020. Березин Михаил</p>
     </footer>
 
-    <section class="popup">
+    <div class="popup">
       <div class="popup__container">
         <h2 class="popup__title">Редактировать профиль</h2>
-        <form class="form">
-          <input class="form__text form__text_name_name" type="text" name="name" placeholder="Имя" value="Жак-Ив Кусто"/>
-          <input class="form__text form__text_name_job" type="text" name="job" placeholder="О себе" value="Исследователь океана"/>
-          <button class="form__submit" type="submit">Сохранить</button>
+        <form class="form" name="profile">
+          <input class="form__text form__text_name_name" type="text" name="name" placeholder="Имя" value=""/>
+          <input class="form__text form__text_name_job" type="text" name="job" placeholder="О себе" value=""/>
+          <button class="form__submit" type="submit" title="Сохранить изменения">Сохранить</button>
           <button class="popup__close-button button" type="reset" title="Закрыть"></button>
         </form>
       </div>
-    </section>
+    </div>
+
+    <div class="popup">
+      <div class="popup__container">
+        <h2 class="popup__title">Новое место</h2>
+        <form class="form" name="add-place">
+          <input class="form__text form__text_name_place" type="text" name="place" placeholder="Название" value=""/>
+          <input class="form__text form__text_name_image" type="text" name="image" placeholder="Ссылка на картинку" value=""/>
+          <button class="form__submit" type="submit" title="Добавить место">Создать</button>
+          <button class="popup__close-button button" type="reset" title="Закрыть"></button>
+        </form>
+      </div>
+    </div>
+
+    <div class="popup">
+      <div class="popup__image-container">
+        <img class="popup__image" src="./images/logo-mesto.svg" alt="Место">
+        <h2 class="popup__image-title">Место</h2>
+        <button class="popup__close-button button" type="reset" title="Закрыть"></button>
+      </div>
+    </div>
 
   </div>
   <script src="./scripts/index.js"></script>
