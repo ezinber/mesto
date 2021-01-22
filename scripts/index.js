@@ -2,18 +2,19 @@ const editButton = document.querySelector('.profile__edit-button');
 const addButton = document.querySelector('.profile__add-button');
 const profileTitle = document.querySelector('.profile__title');
 const profileSubtitle = document.querySelector('.profile__subtitle');
-
-const popups = document.querySelectorAll('.popup');
 const closeButtons = document.querySelectorAll('.popup__close-button');
-const editingPopup = popups[0];
+
+const editingPopup = document.querySelector('.popup_type_edit');
 const editingFormElement = editingPopup.querySelector('.form');
 const nameInput = editingFormElement.querySelector('.form__text_name_name');
 const jobInput = editingFormElement.querySelector('.form__text_name_job');
-const addingPopup = popups[1];
+
+const addingPopup = document.querySelector('.popup_type_add');
 const addingFormElement = addingPopup.querySelector('.form');
 const placeInput = addingFormElement.querySelector('.form__text_name_place');
 const imageInput = addingFormElement.querySelector('.form__text_name_image');
-const imagePopup = popups[2];
+
+const imagePopup = document.querySelector('.popup_type_image');
 const imagePopupPhoto = imagePopup.querySelector('.popup__image');
 const imagePopupTitle = imagePopup.querySelector('.popup__image-title');
 
@@ -21,8 +22,6 @@ const cardsContainer = document.querySelector('.board');
 const cardTemplate = cardsContainer.querySelector('#card').content;
 const cardTemplatePhoto = cardTemplate.querySelector('.board__card-photo');
 const cardTemplateTitle = cardTemplate.querySelector('.board__card-title');
-let cardTemplateLike = cardTemplate.querySelector('.board__card-like');
-let cardTemplateDelete = cardTemplate.querySelector('.board__card-delete');
 const initialCards = [
   {
     name: 'Архыз',
@@ -83,18 +82,11 @@ const submitAddingForm = evt => {
   closePopup(evt);
 }
 
-
-
 const createCard = (image, place) => {
   cardTemplatePhoto.src = image;
   cardTemplatePhoto.alt = place;
   cardTemplateTitle.textContent = place;
-  cardTemplateLike.addEventListener('click', evt => evt.target.classList.toggle('board__card-like_active'));
-  //cardTemplateDelete.addEventListener('click', evt => evt.target.closest('.board__card').remove());
-  cardTemplatePhoto.addEventListener('click', openImagePopup);
-  cardElement = cardTemplate.cloneNode(true);
-  console.log(cardTemplateLike);
-  return cardElement;
+  return cardTemplate.cloneNode(true);
 }
 
 const addInitialCards = () => initialCards.forEach(item => cardsContainer.append(createCard(item.link, item.name)));
@@ -106,3 +98,8 @@ addButton.addEventListener('click', openAddingPopup);
 closeButtons.forEach(item => item.addEventListener('click', closePopup));
 editingFormElement.addEventListener('submit', submitEditingForm);
 addingFormElement.addEventListener('submit', submitAddingForm);
+cardsContainer.addEventListener('click', evt => {
+  evt.target.classList.contains('board__card-like') && evt.target.classList.toggle('board__card-like_active');
+  evt.target.classList.contains('board__card-delete') && evt.target.closest('.board__card').remove();
+  evt.target.classList.contains('board__card-photo') && openImagePopup(evt);
+});
