@@ -20,8 +20,6 @@ const imagePopupTitle = imagePopup.querySelector('.popup__image-title');
 
 const cardsContainer = document.querySelector('.board');
 const cardTemplate = cardsContainer.querySelector('#card').content;
-const cardTemplatePhoto = cardTemplate.querySelector('.board__card-photo');
-const cardTemplateTitle = cardTemplate.querySelector('.board__card-title');
 const initialCards = [
   {
     name: 'Архыз',
@@ -83,10 +81,18 @@ const submitAddingForm = evt => {
 }
 
 const createCard = (image, place) => {
-  cardTemplatePhoto.src = image;
-  cardTemplatePhoto.alt = place;
-  cardTemplateTitle.textContent = place;
-  return cardTemplate.cloneNode(true);
+  cardElement = cardTemplate.cloneNode(true);
+  cardElementPhoto = cardElement.querySelector('.board__card-photo');
+  cardElementTitle = cardElement.querySelector('.board__card-title');
+  cardElementLike = cardElement.querySelector('.board__card-like');
+  cardElementDelete = cardElement.querySelector('.board__card-delete');
+  cardElementPhoto.src = image;
+  cardElementPhoto.alt = place;
+  cardElementTitle.textContent = place;
+  cardElementPhoto.addEventListener('click', openImagePopup);
+  cardElementLike.addEventListener('click', evt => evt.target.classList.toggle('board__card-like_active'));
+  cardElementDelete.addEventListener('click', evt => evt.target.closest('.board__card').remove()); 
+  return cardElement;
 }
 
 const addInitialCards = () => initialCards.forEach(item => cardsContainer.append(createCard(item.link, item.name)));
@@ -98,8 +104,3 @@ addButton.addEventListener('click', openAddingPopup);
 closeButtons.forEach(item => item.addEventListener('click', closePopup));
 editingFormElement.addEventListener('submit', submitEditingForm);
 addingFormElement.addEventListener('submit', submitAddingForm);
-cardsContainer.addEventListener('click', evt => {
-  evt.target.classList.contains('board__card-like') && evt.target.classList.toggle('board__card-like_active');
-  evt.target.classList.contains('board__card-delete') && evt.target.closest('.board__card').remove();
-  evt.target.classList.contains('board__card-photo') && openImagePopup(evt);
-});
