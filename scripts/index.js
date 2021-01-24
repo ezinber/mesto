@@ -81,11 +81,11 @@ const submitAddingForm = evt => {
 }
 
 const createCard = (image, place) => {
-  cardElement = cardTemplate.cloneNode(true);
-  cardElementPhoto = cardElement.querySelector('.board__card-photo');
-  cardElementTitle = cardElement.querySelector('.board__card-title');
-  cardElementLike = cardElement.querySelector('.board__card-like');
-  cardElementDelete = cardElement.querySelector('.board__card-delete');
+  let = cardElement = cardTemplate.cloneNode(true);
+  let = cardElementPhoto = cardElement.querySelector('.board__card-photo');
+  let = cardElementTitle = cardElement.querySelector('.board__card-title');
+  let = cardElementLike = cardElement.querySelector('.board__card-like');
+  let = cardElementDelete = cardElement.querySelector('.board__card-delete');
   cardElementPhoto.src = image;
   cardElementPhoto.alt = place;
   cardElementTitle.textContent = place;
