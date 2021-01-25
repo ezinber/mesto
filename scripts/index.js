@@ -81,17 +81,17 @@ const submitAddingForm = evt => {
 }
 
 const createCard = (image, place) => {
-  let = cardElement = cardTemplate.cloneNode(true);
-  let = cardElementPhoto = cardElement.querySelector('.board__card-photo');
-  let = cardElementTitle = cardElement.querySelector('.board__card-title');
-  let = cardElementLike = cardElement.querySelector('.board__card-like');
-  let = cardElementDelete = cardElement.querySelector('.board__card-delete');
+  const cardElement = cardTemplate.cloneNode(true);
+  const cardElementPhoto = cardElement.querySelector('.board__card-photo');
+  const cardElementTitle = cardElement.querySelector('.board__card-title');
+  const cardElementLike = cardElement.querySelector('.board__card-like');
+  const cardElementDelete = cardElement.querySelector('.board__card-delete');
   cardElementPhoto.src = image;
   cardElementPhoto.alt = place;
   cardElementTitle.textContent = place;
   cardElementPhoto.addEventListener('click', openImagePopup);
   cardElementLike.addEventListener('click', evt => evt.target.classList.toggle('board__card-like_active'));
-  cardElementDelete.addEventListener('click', evt => evt.target.closest('.board__card').remove()); 
+  cardElementDelete.addEventListener('click', evt => evt.target.closest('.board__card').remove());
   return cardElement;
 }
 
