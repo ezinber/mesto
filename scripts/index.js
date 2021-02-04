@@ -5,14 +5,14 @@ const profileSubtitle = document.querySelector('.profile__subtitle');
 const closeButtons = document.querySelectorAll('.popup__close-button');
 
 const editingPopup = document.querySelector('.popup_type_edit');
-const editingFormElement = editingPopup.querySelector('.form');
-const nameInput = editingFormElement.querySelector('.form__text_name_name');
-const jobInput = editingFormElement.querySelector('.form__text_name_job');
+const editingFormElement = editingPopup.querySelector('.popup__form');
+const nameInput = editingFormElement.querySelector('.popup__input_name_name');
+const jobInput = editingFormElement.querySelector('.popup__input_name_job');
 
 const addingPopup = document.querySelector('.popup_type_add');
-const addingFormElement = addingPopup.querySelector('.form');
-const placeInput = addingFormElement.querySelector('.form__text_name_place');
-const imageInput = addingFormElement.querySelector('.form__text_name_image');
+const addingFormElement = addingPopup.querySelector('.popup__form');
+const placeInput = addingFormElement.querySelector('.popup__input_name_place');
+const imageInput = addingFormElement.querySelector('.popup__input_name_image');
 
 const imagePopup = document.querySelector('.popup_type_image');
 const imagePopupPhoto = imagePopup.querySelector('.popup__image');
