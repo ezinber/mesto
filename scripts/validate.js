@@ -9,12 +9,11 @@ const hideInputError = (formElement, inputElement, formObject) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.remove(formObject.inputErrorClass);
   errorElement.classList.remove(formObject.errorClass);
-  errorElement.textContent = '';
+  //errorElement.textContent = '';
 };
 
 const checkInputValidity = (formElement, inputElement, formObject) => {
   if (!inputElement.validity.valid) {
-    console.log(inputElement);
     showInputError(formElement, inputElement, inputElement.validationMessage, formObject);
   } else {
     hideInputError(formElement, inputElement, formObject);

@@ -2,16 +2,16 @@
   margin: 48px 0 0;
   padding: 0;
   height: 50px;
-  border: none;
+  border: 1px solid #000;
   outline: none;
   color: #fff;
-  background: #000;
+  background-color: #000;
   border-radius: 2px;
   font-weight: normal;
   font-size: 18px;
   line-height: 22px;
   text-align: center;
-  transition: opacity .2s linear;
+  transition: color .2s linear, background-color .2s linear, opacity .2s linear;
 }
 
 .popup__button:hover {

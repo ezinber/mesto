@@ -1,0 +1,4 @@
+.popup__error_visible {
+  visibility: inherit;
+  opacity: 1;
+}
