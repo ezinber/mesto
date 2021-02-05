@@ -9,7 +9,6 @@ const hideInputError = (formElement, inputElement, formObject) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.remove(formObject.inputErrorClass);
   errorElement.classList.remove(formObject.errorClass);
-  //errorElement.textContent = '';
 };
 
 const checkInputValidity = (formElement, inputElement, formObject) => {
@@ -50,7 +49,6 @@ const enableValidation = formObject => {
   const formList = Array.from(document.querySelectorAll(formObject.formSelector));
   formList.forEach((formElement) => {
     formElement.addEventListener('submit', evt => evt.preventDefault());
-
     setEventListeners(formElement, formObject);
   });
 };
