@@ -22,32 +22,6 @@ const imagePopupTitle = imagePopup.querySelector('.popup__image-title');
 
 const cardsContainer = document.querySelector('.board');
 const cardTemplate = cardsContainer.querySelector('#card').content;
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
 
 const popupObject = {
   popupSelector: '.popup',
@@ -59,11 +33,6 @@ const popupObject = {
   errorClass: 'popup__error_visible'
 };
 
-const validatePopup = (inputList, formElement, buttonElement) => {
-  inputList.forEach(inputElement => inputElement.classList.contains(popupObject.inputErrorClass) && hideInputError(formElement, inputElement, popupObject));
-  toggleButtonState(inputList, buttonElement, popupObject);
-};
-
 const escapeEventHandler = evt => {
   if (evt.key === 'Escape') {
     const activePopup = allPopups.find(popup => popup.classList.contains(popupObject.activePopupClass));
@@ -71,30 +40,30 @@ const escapeEventHandler = evt => {
   }
 };
 
-const addEscapeListener = () => document.addEventListener('keydown', escapeEventHandler);
-
-const openEditingPopup = () => {
+const prepareEditingPopup = () => {
   nameInput.value = profileTitle.textContent;
   jobInput.value = profileSubtitle.textContent;
   validatePopup([nameInput, jobInput], editingFormElement, editingSubmitButton);
-  editingPopup.classList.add(popupObject.activePopupClass);
-  addEscapeListener();
+  openPopup(editingPopup);
 };
 
-const openAddingPopup = () => {
+const prepareAddingPopup = () => {
   placeInput.value = '';
   imageInput.value = '';
   validatePopup([placeInput, imageInput], addingFormElement, addingSubmitButton);
-  addingPopup.classList.add(popupObject.activePopupClass);
-  addEscapeListener();
+  openPopup(addingPopup);
 };
 
-const openImagePopup = evt => {
-  imagePopupPhoto.src = evt.target.src;
-  imagePopupTitle.textContent = evt.target.nextElementSibling.textContent;
-  imagePopup.classList.add(popupObject.activePopupClass);
-  addEscapeListener();
+const prepareImagePopup = (image, place) => {
+  imagePopupPhoto.src = image;
+  imagePopupTitle.textContent = place;
+  openPopup(imagePopup);
 };
+
+const openPopup = (preparedPopup) => {
+  preparedPopup.classList.add(popupObject.activePopupClass);
+  document.addEventListener('keydown', escapeEventHandler);
+}
 
 const closePopup = (evt, activePopup) => {
   if (activePopup || evt.type === 'submit' || evt.target.classList.contains(popupObject.popupCloseButtonClass) || evt.target.classList.contains(popupObject.popupClass)) {
@@ -126,7 +95,7 @@ const createCard = (image, place) => {
   cardElementPhoto.src = image;
   cardElementPhoto.alt = place;
   cardElementTitle.textContent = place;
-  cardElementPhoto.addEventListener('click', openImagePopup);
+  cardElementPhoto.addEventListener('click', () => prepareImagePopup(image, place));
   cardElementLike.addEventListener('click', evt => evt.target.classList.toggle('board__card-like_active'));
   cardElementDelete.addEventListener('click', evt => evt.target.closest('.board__card').remove());
   return cardElement;
@@ -136,8 +105,8 @@ const addInitialCards = () => initialCards.forEach(item => cardsContainer.append
 
 addInitialCards();
 
-editButton.addEventListener('click', openEditingPopup);
-addButton.addEventListener('click', openAddingPopup);
+editButton.addEventListener('click', prepareEditingPopup);
+addButton.addEventListener('click', prepareAddingPopup);
 allPopups.forEach(item => item.addEventListener('click', closePopup));
 editingFormElement.addEventListener('submit', submitEditingForm);
 addingFormElement.addEventListener('submit', submitAddingForm);

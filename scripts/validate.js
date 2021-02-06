@@ -1,3 +1,8 @@
+const validatePopup = (inputList, formElement, buttonElement) => {
+  inputList.forEach(inputElement => inputElement.classList.contains(popupObject.inputErrorClass) && hideInputError(formElement, inputElement, popupObject));
+  toggleButtonState(inputList, buttonElement, popupObject);
+};
+
 const showInputError = (formElement, inputElement, errorMessage, formObject) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.add(formObject.inputErrorClass);
@@ -28,8 +33,10 @@ const hasInvalidInput = inputList => {
 const toggleButtonState = (inputList, buttonElement, formObject) => {
   if (hasInvalidInput(inputList)) {
     buttonElement.classList.add(formObject.inactiveButtonClass);
+    buttonElement.setAttribute('disabled', true);
   } else {
     buttonElement.classList.remove(formObject.inactiveButtonClass);
+    buttonElement.removeAttribute('disabled');
   }
 };
 
