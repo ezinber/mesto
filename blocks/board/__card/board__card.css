@@ -8,3 +8,11 @@
   border-radius: 10px;
   overflow: hidden;
 }
+
+.board__card::before {
+  content: '';
+  width: 100%;
+  height: 100%;
+  background: #000;
+  grid-area: 1 / 1 / 2 / 3;
+}
