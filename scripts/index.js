@@ -33,13 +33,14 @@ const popupObject = {
   errorClass: 'popup__error_visible'
 };
 
-const popupEventsHandler = evt => {
-  evt.preventDefault();
+const popupEscapeHandler = evt => {
   if (evt.key === 'Escape') {
     const activePopup = allPopups.find(popup => popup.classList.contains(popupObject.activePopupClass));
     closePopup(evt, activePopup);
   }
 };
+
+const popupScrollPrevent = evt => evt.preventDefault();
 
 const prepareEditingPopup = () => {
   nameInput.value = profileTitle.textContent;
@@ -63,18 +64,18 @@ const prepareImagePopup = (image, place) => {
 
 const openPopup = (preparedPopup) => {
   preparedPopup.classList.add(popupObject.activePopupClass);
-  document.addEventListener('keydown', popupEventsHandler);
-  document.addEventListener('wheel', popupEventsHandler, {passive: false});
-  document.addEventListener('touchmove', popupEventsHandler, {passive: false});
+  document.addEventListener('keydown', popupEscapeHandler);
+  document.addEventListener('wheel', popupScrollPrevent, {passive: false});
+  document.addEventListener('touchmove', popupScrollPrevent, {passive: false});
 }
 
 const closePopup = (evt, activePopup) => {
   if (activePopup || evt.type === 'submit' || evt.target.classList.contains(popupObject.popupCloseButtonClass) || evt.target.classList.contains(popupObject.popupClass)) {
     !activePopup && (activePopup = evt.target.closest(popupObject.popupSelector));
     activePopup.classList.remove(popupObject.activePopupClass);
-    document.removeEventListener('keydown', popupEventsHandler);
-    document.removeEventListener('wheel', popupEventsHandler);
-    document.removeEventListener('touchmove', popupEventsHandler);
+    document.removeEventListener('keydown', popupEscapeHandler);
+    document.removeEventListener('wheel', popupScrollPrevent);
+    document.removeEventListener('touchmove', popupScrollPrevent);
   }
 };
 
