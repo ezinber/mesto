@@ -33,7 +33,8 @@ const popupObject = {
   errorClass: 'popup__error_visible'
 };
 
-const escapeEventHandler = evt => {
+const popupEventsHandler = evt => {
+  evt.preventDefault();
   if (evt.key === 'Escape') {
     const activePopup = allPopups.find(popup => popup.classList.contains(popupObject.activePopupClass));
     closePopup(evt, activePopup);
@@ -62,14 +63,18 @@ const prepareImagePopup = (image, place) => {
 
 const openPopup = (preparedPopup) => {
   preparedPopup.classList.add(popupObject.activePopupClass);
-  document.addEventListener('keydown', escapeEventHandler);
+  document.addEventListener('keydown', popupEventsHandler);
+  document.addEventListener('wheel', popupEventsHandler, {passive: false});
+  document.addEventListener('touchmove', popupEventsHandler, {passive: false});
 }
 
 const closePopup = (evt, activePopup) => {
   if (activePopup || evt.type === 'submit' || evt.target.classList.contains(popupObject.popupCloseButtonClass) || evt.target.classList.contains(popupObject.popupClass)) {
     !activePopup && (activePopup = evt.target.closest(popupObject.popupSelector));
     activePopup.classList.remove(popupObject.activePopupClass);
-    document.removeEventListener('keydown', escapeEventHandler);
+    document.removeEventListener('keydown', popupEventsHandler);
+    document.removeEventListener('wheel', popupEventsHandler);
+    document.removeEventListener('touchmove', popupEventsHandler);
   }
 };
 

@@ -9,4 +9,5 @@
   white-space: nowrap;
   overflow: hidden;
   color: #000;
+  cursor: default;
 }
