@@ -134,6 +134,10 @@ popupList.forEach(item => item.addEventListener('click', closePopup));
 editingFormElement.addEventListener('submit', submitEditingForm);
 addingFormElement.addEventListener('submit', submitAddingForm);
 
+<<<<<<< HEAD
 import {Card} from './Card.js';
+=======
+import {Card} from './card.js';
+>>>>>>> 4dd7682af94e8ccc65e3afbfff644c5c4ecc1f88
 import {initialCards} from './initialCards.js';
 import {FormValidator} from './FormValidator.js';
