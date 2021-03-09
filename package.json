@@ -1,0 +1,19 @@
+{
+  "name": "mesto",
+  "version": "1.0.0",
+  "description": "yandex.praktikum project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ezinber/mesto.git"
+  },
+  "author": "Mikhail Berezin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ezinber/mesto/issues"
+  },
+  "homepage": "https://github.com/ezinber/mesto#readme"
+}
