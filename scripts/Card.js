@@ -1,10 +1,9 @@
-import {prepareImagePopup} from './index.js';
-
 export class Card {
-  constructor(data, cardSelector) {
+  constructor(data, cardSelector, { handleCardClick }) {
     this._link = data.link;
     this._name = data.name;
     this._cardSelector = cardSelector;
+    this._handleCardClick = handleCardClick;
   }
 
   generateCard() {
@@ -30,7 +29,7 @@ export class Card {
   _setEventListeners() {
     this._elementLike.addEventListener('click', () => this._handleLikeClick());
     this._elementDelete.addEventListener('click', () => this._handleDeleteClick());
-    this._elementPhoto.addEventListener('click', () => this._handleImagePopup());
+    this._elementPhoto.addEventListener('click', () => this._handleCardClick(this._link, this._name));
   }
 
   _handleLikeClick() {
@@ -39,9 +38,5 @@ export class Card {
 
   _handleDeleteClick() {
     this._elementDelete.closest('.board__card').remove();
-  }
-
-  _handleImagePopup() {
-    prepareImagePopup(this._link, this._name);
   }
 }
