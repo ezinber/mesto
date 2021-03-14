@@ -1,34 +1,18 @@
-import { Card } from './Card.js';
-import { initialCards } from './initialCards.js';
-import { FormValidator } from './FormValidator.js';
-import { Section } from './Section.js';
-import { PopupWithImage } from './PopupWithImage.js';
-import { PopupWithForm } from './PopupWithForm.js';
-import { UserInfo } from './UserInfo.js';
+import '../../pages/index.css';
 
-export const popupObject = {
-  popupSelector: '.popup',
-  popupClass: 'popup',
-  activePopupClass: 'popup_opened',
-  popupCloseButtonSelector: '.popup__close-button',
-  popupCloseButtonClass: 'popup__close-button',
-  inactiveButtonClass: 'popup__button_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible'
-};
-
-const formObject = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__button',
-  inactiveButtonClass: 'popup__button_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible'
-};
-
-const editButton = document.querySelector('.profile__edit-button');
-const addButton = document.querySelector('.profile__add-button');
-const cardsContainer = document.querySelector('.board');
+import {
+  formObject,
+  editButton,
+  addButton,
+  cardsContainer
+} from '../utils/constants.js';
+import { Card } from '../components/Card.js';
+import { initialCards } from '../utils/initialCards.js';
+import { FormValidator } from '../components/FormValidator.js';
+import { Section } from '../components/Section.js';
+import { PopupWithImage } from '../components/PopupWithImage.js';
+import { PopupWithForm } from '../components/PopupWithForm.js';
+import { UserInfo } from '../components/UserInfo.js';
 
 const userInfo = new UserInfo({
   userNameSelector: '.profile__title',
@@ -87,7 +71,7 @@ const cardList = new Section({
       }
     });
     const cardElement = card.generateCard();
-    cardList.addItem(cardElement);
+    cardList.addItem(cardElement, true);
   }
 }, cardsContainer);
 

@@ -9,7 +9,9 @@ export class Section {
     this._initialArray.forEach(item => this._renderer(item));
   }
 
-  addItem(element) {
-    this._container.append(element);
+  addItem(element, isInitial) {
+    isInitial
+    ? this._container.append(element)
+    : this._container.prepend(element);
   }
 }
