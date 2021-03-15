@@ -10,3 +10,13 @@ export const formObject = {
 export const editButton = document.querySelector('.profile__edit-button');
 export const addButton = document.querySelector('.profile__add-button');
 export const cardsContainer = document.querySelector('.board');
+
+const allPopups = Array.from(document.querySelectorAll('.popup'));
+
+export const editingFormElement = allPopups.find(popup =>
+  popup.classList.contains('popup_type_edit'))
+  .querySelector('.popup__form');
+
+export const addingFormElement = allPopups.find(popup =>
+  popup.classList.contains('popup_type_add'))
+  .querySelector('.popup__form');

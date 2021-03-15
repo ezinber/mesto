@@ -4,7 +4,9 @@ import {
   formObject,
   editButton,
   addButton,
-  cardsContainer
+  cardsContainer,
+  editingFormElement,
+  addingFormElement
 } from '../utils/constants.js';
 import { Card } from '../components/Card.js';
 import { initialCards } from '../utils/initialCards.js';
@@ -19,14 +21,16 @@ const userInfo = new UserInfo({
   userJobSelector: '.profile__subtitle'
 });
 
+const editingFormValidator = new FormValidator(formObject, editingFormElement);
+editingFormValidator.enableValidation();
+
+const addingFormValidator = new FormValidator(formObject, addingFormElement);
+addingFormValidator.enableValidation();
+
 const editingPopup = new PopupWithForm({
   popupSelector: '.popup_type_edit',
   handleFormSubmit: (inputValues) => {
     userInfo.setUserInfo(inputValues);
-  },
-  formValidate: (formElement) => {
-    window.editingFormValidator = new FormValidator(formObject, formElement);
-    editingFormValidator.enableValidation();
   },
   formRestore: () => {
     editingFormValidator.restoreForm();
@@ -48,10 +52,6 @@ const addingPopup = new PopupWithForm({
     const cardElement = card.generateCard();
 
     cardList.addItem(cardElement);
-  },
-  formValidate: (formElement) => {
-    window.addingFormValidator = new FormValidator(formObject, formElement);
-    addingFormValidator.enableValidation();
   },
   formRestore: () => {
     addingFormValidator.restoreForm();
