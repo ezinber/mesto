@@ -54,7 +54,10 @@ const editingPopup = new PopupWithForm({
     api.setUserInfo(inputValues)
       .then(res => userInfo.setUserInfo(res))
       .catch(err => console.log(err))
-      .finally(() => editingPopup.buttonElement.textContent = 'Сохранить');
+      .finally(() => {
+        editingPopup.close();
+        editingPopup.buttonElement.textContent = 'Сохранить';
+      });
   },
   formRestore: () => {
     editingFormValidator.restoreForm();
@@ -75,7 +78,10 @@ const updateAvatarPopup = new PopupWithForm({
         userInfo.setUserInfo(res)
       })
       .catch(err => console.log(err))
-      .finally(() => updateAvatarPopup.buttonElement.textContent = 'Сохранить');
+      .finally(() => {
+        updateAvatarPopup.close();
+        updateAvatarPopup.buttonElement.textContent = 'Сохранить';
+      });
   },
   formRestore: () => {
     updateAvatarFormValidator.restoreForm();
@@ -111,7 +117,10 @@ const addingPopup = new PopupWithForm({
         cardList.addItem(card.generateCard());
       })
       .catch(err => console.log(err))
-      .finally(() => addingPopup.buttonElement.textContent = 'Сохранить');
+      .finally(() => {
+        addingPopup.close();
+        addingPopup.buttonElement.textContent = 'Сохранить';
+      });
   },
   formRestore: () => {
     addingFormValidator.restoreForm();
