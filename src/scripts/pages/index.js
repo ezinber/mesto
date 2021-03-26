@@ -10,7 +10,8 @@ import {
   updateAvatarFormElement,
   addingFormElement
 } from '../utils/constants.js';
-import { Api } from '../components/Api.js'
+
+import { Api } from '../components/Api.js';
 import { Card } from '../components/Card.js';
 import { FormValidator } from '../components/FormValidator.js';
 import { Section } from '../components/Section.js';
@@ -34,6 +35,30 @@ const api = new Api({
     return Promise.reject(`Ошибка: ${res.status}`);
   }
 });
+
+const createCard = item => {
+  const card = new Card(item, '#card', {
+    handleCardClick: (link, name) => {
+      imagePopup.open(link, name);
+    },
+    handleDeleteClick: (cardElement, cardId) => {
+      deletePopup.open(cardElement, cardId);
+    },
+    handleLikeClick: (isLiked, cardId) => {
+      api.toggleCardLike(isLiked, cardId)
+        .then(res => card.toggleLikes(res))
+        .catch(err => console.log(err));
+    },
+    isOwner: cardOwnerId => {
+      return userInfo.userId === cardOwnerId;
+    },
+    isLiked: likes => {
+      return likes.some(item => item._id === userInfo.userId);
+    }
+  });
+
+  return card;
+}
 
 const userInfo = new UserInfo({
   userNameSelector: '.profile__title',
@@ -94,26 +119,7 @@ const addingPopup = new PopupWithForm({
     addingPopup.buttonElement.textContent = 'Сохранение...';
     api.addCard(inputValues)
       .then(res => {
-        const card = new Card(res, '#card', {
-          handleCardClick: (link, name) => {
-            imagePopup.open(link, name);
-          },
-          handleDeleteClick: (cardElement, cardId) => {
-            deletePopup.open(cardElement, cardId);
-          },
-          handleLikeClick: (isLiked, cardId) => {
-            api.toggleCardLike(isLiked, cardId)
-              .then(res => card.toggleLikes(res))
-              .catch(err => console.log(err));
-          },
-          isOwner: cardOwnerId => {
-            return userInfo.userId === cardOwnerId;
-          },
-          isLiked: likes => {
-            return likes.some(item => item._id === userInfo.userId);
-          }
-        });
-
+        const card = createCard(res);
         cardList.addItem(card.generateCard());
       })
       .catch(err => console.log(err))
@@ -141,39 +147,22 @@ const imagePopup = new PopupWithImage({
 });
 
 const cardList = new Section({
-  renderer: (item) => {
-    const card = new Card(item, '#card', {
-      handleCardClick: (link, name) => {
-        imagePopup.open(link, name);
-      },
-      handleDeleteClick: (cardElement, cardId) => {
-        deletePopup.open(cardElement, cardId);
-      },
-      handleLikeClick: (isLiked, cardId) => {
-        api.toggleCardLike(isLiked, cardId)
-          .then(res => card.toggleLikes(res))
-          .catch(err => console.log(err));
-      },
-      isOwner: cardOwnerId => {
-        return userInfo.userId === cardOwnerId;
-      },
-      isLiked: likes => {
-        return likes.some(item => item._id === userInfo.userId);
-      }
-    });
-
+  renderer: item => {
+    const card = createCard(item);
     cardList.addItem(card.generateCard(), true);
   }
 }, cardsContainer);
 
 
 
-api.getUserInfo()
-  .then(res => userInfo.setUserInfo(res))
-  .catch(err => console.log(err));
-
-api.getInitialCards()
-  .then(res => cardList.renderItems(res))
+Promise.all([
+  api.getUserInfo(),
+  api.getInitialCards()
+])
+  .then(([userData, initialCards]) => {
+    userInfo.setUserInfo(userData);
+    cardList.renderItems(initialCards);
+  })
   .catch(err => console.log(err));
 
 editingFormValidator.enableValidation();
