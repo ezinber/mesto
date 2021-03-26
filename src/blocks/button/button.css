@@ -8,7 +8,3 @@
   opacity: 0.6;
   cursor: pointer;
 }
-
-.button:focus {
-  opacity: 0.6;
-}

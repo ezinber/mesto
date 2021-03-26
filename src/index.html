@@ -17,6 +17,7 @@
     <main class="main">
       <section class="profile">
         <img class="profile__avatar" src="<%=require('./images/profile-avatar.jpg')%>" alt="Жак-Ив Кусто">
+        <button class="profile__avatar-button button"></button>
         <div class="profile__info">
           <h1 class="profile__title">Жак-Ив Кусто</h1>
           <button class="profile__edit-button button" type="button" title="Редактировать профиль"></button>
@@ -31,7 +32,10 @@
             <li class="board__card">
               <img class="board__card-photo button" src="card-photo" alt="Место">
               <h2 class="board__card-title">Место</h2>
-              <button class="board__card-like button" type="button" title="Нравится"></button>
+              <div class ="board__card-like-wrapper">
+                <button class="board__card-like button" type="button" title="Нравится"></button>
+                <p class="board__card-like-counter">0</p>
+              </div>
               <button class="board__card-delete button" type="button" title="Удалить"></button>
             </li>
           </template>
@@ -40,17 +44,29 @@
     </main>
 
     <footer class="footer">
-      <p class="footer__copyright">© 2020. Березин Михаил</p>
+      <p class="footer__copyright">© 2021. Березин Михаил</p>
     </footer>
 
     <div class="popup popup_type_edit">
       <div class="popup__container">
         <h2 class="popup__title">Редактировать профиль</h2>
         <form class="popup__form" name="profile">
-          <input class="popup__input popup__input_name_name" id="name-input" type="text" name="name" placeholder="Имя" value="" minlength="2" maxlength="40" required/>
+          <input class="popup__input" id="name-input" type="text" name="name" placeholder="Имя" value="" minlength="2" maxlength="40" required/>
           <span class="popup__error name-input-error"></span>
-          <input class="popup__input popup__input_name_job" id="job-input" type="text" name="job" placeholder="О себе" value="" minlength="2" maxlength="200" required/>
-          <span class="popup__error job-input-error"></span>
+          <input class="popup__input" id="about-input" type="text" name="about" placeholder="О себе" value="" minlength="2" maxlength="200" required/>
+          <span class="popup__error about-input-error"></span>
+          <button class="popup__button" type="submit" title="Сохранить изменения">Сохранить</button>
+          <button class="popup__close-button button" type="reset" title="Закрыть"></button>
+        </form>
+      </div>
+    </div>
+
+    <div class="popup popup_type_update-avatar">
+      <div class="popup__container">
+        <h2 class="popup__title">Обновить аватар</h2>
+        <form class="popup__form" name="update-avatar">
+          <input class="popup__input" id="avatar-input" type="url" name="avatar" placeholder="Ссылка на картинку" value="" required/>
+          <span class="popup__error avatar-input-error"></span>
           <button class="popup__button" type="submit" title="Сохранить изменения">Сохранить</button>
           <button class="popup__close-button button" type="reset" title="Закрыть"></button>
         </form>
@@ -61,10 +77,10 @@
       <div class="popup__container">
         <h2 class="popup__title">Новое место</h2>
         <form class="popup__form" name="add-place">
-          <input class="popup__input popup__input_name_place" id="place-input" type="text" name="name" placeholder="Название" value="" minlength="2" maxlength="30" required/>
-          <span class="popup__error place-input-error"></span>
-          <input class="popup__input popup__input_name_image" id="image-input" type="url" name="link" placeholder="Ссылка на картинку" value="" required/>
-          <span class="popup__error image-input-error"></span>
+          <input class="popup__input" id="name-input" type="text" name="name" placeholder="Название" value="" minlength="2" maxlength="30" required/>
+          <span class="popup__error name-input-error"></span>
+          <input class="popup__input" id="link-input" type="url" name="link" placeholder="Ссылка на картинку" value="" required/>
+          <span class="popup__error link-input-error"></span>
           <button class="popup__button" type="submit" title="Добавить место">Создать</button>
           <button class="popup__close-button button" type="reset" title="Закрыть"></button>
         </form>
@@ -75,6 +91,14 @@
       <div class="popup__image-container">
         <img class="popup__image" src="<%=require('./images/logo-mesto.svg')%>" alt="Место">
         <h2 class="popup__image-title">Место</h2>
+        <button class="popup__close-button button" type="reset" title="Закрыть"></button>
+      </div>
+    </div>
+
+    <div class="popup popup_type_delete">
+      <div class="popup__container">
+        <h2 class="popup__title">Вы уверены?</h2>
+        <button class="popup__button" type="submit" title="Сохранить изменения">Да</button>
         <button class="popup__close-button button" type="reset" title="Закрыть"></button>
       </div>
     </div>

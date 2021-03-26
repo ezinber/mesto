@@ -8,6 +8,7 @@ export class PopupWithForm extends Popup {
     this._handleFormSubmit = handleFormSubmit;
     this._formRestore = formRestore;
     this._formPrefill = formPrefill;
+    this.buttonElement = this._formElement.querySelector('.popup__button');
   }
 
   _getInputValues() {
