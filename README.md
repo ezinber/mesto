@@ -1,5 +1,7 @@
 # Сервис Mesto
 
+[Демо на Github Pages](https://ezinber.github.io/mesto/)
+
 Интерактивная страница, куда можно добавлять фотографии, удалять их и ставить лайки.
 
 ![mesto](https://user-images.githubusercontent.com/73654760/116001803-1dcab700-a5ff-11eb-877c-18208fd8c497.gif)
@@ -26,7 +28,5 @@
 - **JavaScript**.
 
 ---
-
-Страница проекта: https://ezinber.github.io/mesto/
 
 Автор: Березин Михаил
