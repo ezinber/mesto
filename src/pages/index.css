@@ -48,3 +48,5 @@
 @import url('../blocks/popup/__button/_disabled/popup__button_disabled.css');
 @import url('../blocks/popup/__error/popup__error.css');
 @import url('../blocks/popup/__error/_visible/popup__error_visible.css');
+
+@import url('../blocks/placeholder/placeholder.css');

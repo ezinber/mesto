@@ -8,7 +8,8 @@ import {
   cardsContainer,
   editingFormElement,
   updateAvatarFormElement,
-  addingFormElement
+  addingFormElement,
+  cardsPlaceholders
 } from '../utils/constants.js';
 
 import { Api } from '../components/Api.js';
@@ -160,6 +161,7 @@ Promise.all([
   api.getInitialCards()
 ])
   .then(([userData, initialCards]) => {
+    cardsPlaceholders.forEach(item => item.remove());
     userInfo.setUserInfo(userData);
     cardList.renderItems(initialCards);
   })

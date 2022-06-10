@@ -11,6 +11,7 @@ export const editButton = document.querySelector('.profile__edit-button');
 export const updateAvatarButton = document.querySelector('.profile__avatar-button');
 export const addButton = document.querySelector('.profile__add-button');
 export const cardsContainer = document.querySelector('.board');
+export const cardsPlaceholders = cardsContainer.querySelectorAll('.placeholder');
 
 const allPopups = Array.from(document.querySelectorAll('.popup'));
 
