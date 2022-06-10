@@ -40,4 +40,5 @@
 .popup__button_disabled{background-color:#fff;color:#000;opacity:.2;border:1px solid #000}.popup__button_disabled:hover{opacity:.2;cursor:default}.popup__button_disabled:focus{opacity:.2}
 .popup__error{min-height:30px;margin:0 0 -30px;padding:0;visibility:hidden;color:red;font-weight:400;font-size:12px;line-height:15px;opacity:0;transition:visibility .2s linear,opacity .2s linear}
 .popup__error_visible{visibility:inherit;opacity:1}
+.placeholder{display:flex;overflow:hidden;position:relative;background-color:#d3d3d3}.placeholder:before{content:"";position:absolute;left:-45%;height:100%;width:45%;background:none;background-image:linear-gradient(270deg,hsla(0,0%,98.4%,.05),hsla(0,0%,98.4%,.3),hsla(0,0%,98.4%,.6),hsla(0,0%,98.4%,.3),hsla(0,0%,98.4%,.05));-webkit-animation:loading 1s infinite;animation:loading 1s infinite}@-webkit-keyframes loading{0%{left:-45%}to{left:100%}}@keyframes loading{0%{left:-45%}to{left:100%}}
 
